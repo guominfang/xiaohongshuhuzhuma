@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>小红书春节游乐园活动助手</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -86,9 +86,9 @@
             <p><label class="label-w">薯粉码:</label><input class="input-w" type="text" name="gzh_code"
                                                          placeholder="wool小顽家公众号发送 '薯粉码'"/></p>
             <p><label class="label-w">剩余互助次数:</label><input class="input-w" type="text" name="count"
-                                                            placeholder="诚信填写剩余次数"/></p>
+                                                            placeholder=" '诚信' 填写剩余次数（1～3）"/></p>
             <p><label class="label-w">你的互助码:</label><textarea class="input-w" cols="5" rows="4" name="code"
-                                                              placeholder="再邀请3名好友助力，立即获得1只薯队长（非拉新码）"></textarea></p>
+                                                              placeholder="再邀请3名好友助力，立即获得1只薯队长（互助码）"></textarea></p>
             <button type="submit" value="search">查询互助队伍</button>
         </form>
     </div>

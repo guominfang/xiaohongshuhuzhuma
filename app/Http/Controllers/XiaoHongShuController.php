@@ -3,14 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Log;
 
 class XiaoHongShuController extends Controller
 {
     //
     const GZH_CODE = "QvAVuLm9AWGkVFn6PG5UBo5z3Cj53ju1trjww8XOEgw";
-    const COUNT = ['1','2','3'];
+    const COUNT = ['1', '2', '3'];
 
     public function search(Request $request)
     {
