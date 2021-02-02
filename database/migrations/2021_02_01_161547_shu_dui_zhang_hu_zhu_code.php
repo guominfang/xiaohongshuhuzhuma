@@ -18,7 +18,7 @@ class ShuDuiZhangHuZhuCode extends Migration
             $table->string('gzh_code');
             $table->string('count');
             $table->string('code');
-            $table->timestamp('created_at')->nullable();
+            $table->integer('time')->default(0);
         });
     }
 

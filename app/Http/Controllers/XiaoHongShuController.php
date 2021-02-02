@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ShuDuiZhangHuZhuCode;
 use Illuminate\Http\Request;
 
 class XiaoHongShuController extends Controller
@@ -33,6 +34,25 @@ class XiaoHongShuController extends Controller
 
         $param['code'] = trim($param['code']);
 
-        return $param;
+        $repose = new ShuDuiZhangHuZhuCode();
+        $allData = array_chunk($repose->search($param), $param['count'] + 1);
+        $returnData = [];
+        foreach ($allData as $groupData) {
+            foreach ($groupData as $data) {
+                if ($data['code'] === $param['code']) {
+                    $returnData = $groupData;
+                }
+            }
+        }
+
+        if (count($returnData) != $param['count'] + 1) {
+            return ['msg' => '未组队成功，请稍后尝试回来再试一次'];
+        }
+
+        $returnData = array_filter($returnData, function ($tempData) use ($param) {
+            return $tempData['code'] !== $param['code'];
+        });
+
+        return ['msg' => "组队成功，诚信帮助以下小薯粉互助吧", 'data' => array_column($returnData, 'code')];
     }
 }

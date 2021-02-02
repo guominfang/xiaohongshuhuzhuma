@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ShuDuiZhangHuZhuCode extends Model
 {
     //
-
+    public $timestamps = false;
     /**
      * 与模型关联的表名
      *
@@ -16,8 +16,8 @@ class ShuDuiZhangHuZhuCode extends Model
     protected $table = 'shu_dui_zhang_hu_zhu_code';
 
 
-
-    public function search($params) {
+    public function search($params)
+    {
 
 //
         $exists = self::where('count', $params['count'])->where('code', $params['code'])->exists();
@@ -26,16 +26,17 @@ class ShuDuiZhangHuZhuCode extends Model
         }
 
 
-        return self::where('count', $params['count'])->orderBy('created_at')->get();
+        return self::where('count', $params['count'])->orderBy('time')->get()->toArray();
     }
 
-
-    public function store($params) {
+    public function store($params)
+    {
         // 不存在则插入
         $mode = new ShuDuiZhangHuZhuCode();
         $mode->gzh_code = $params['gzh_code'];
         $mode->count = $params['count'];
         $mode->code = $params['code'];
+        $mode->time = time();
         $mode->save();
     }
 }
