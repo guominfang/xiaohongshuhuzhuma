@@ -15,6 +15,7 @@ class ShuDuiZhangHuZhuCode extends Migration
     {
         Schema::create('shu_dui_zhang_hu_zhu_code', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('gzh_code');
             $table->string('count');
             $table->string('code');
             $table->timestamp('created_at')->nullable();

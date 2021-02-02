@@ -78,9 +78,11 @@
 <div class="position-ref full-height">
     <div class="content">
         <div class="title m-t-md">
-            小红书<br/>春节游乐园活动助手
+            小红书<br/>春节游乐园活动互助助手
         </div>
-
+        <div style="color: red">
+            诚信游戏，不要因为一个活动，丢了人品
+        </div>
         <form action="/search" method="post">
             @csrf
             <p><label class="label-w">薯粉码:</label><input class="input-w" type="text" name="gzh_code"

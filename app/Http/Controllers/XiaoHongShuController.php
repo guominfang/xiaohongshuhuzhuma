@@ -7,9 +7,6 @@ use Illuminate\Http\Request;
 class XiaoHongShuController extends Controller
 {
     //
-    const GZH_CODE = "QvAVuLm9AWGkVFn6PG5UBo5z3Cj53ju1trjww8XOEgw";
-    const COUNT = ['1', '2', '3'];
-
     public function search(Request $request)
     {
         $param = $request->all();
@@ -18,7 +15,7 @@ class XiaoHongShuController extends Controller
             return "请去公众号获取'薯粉码'";
         }
 
-        if ($param['gzh_code'] !== self::GZH_CODE) {
+        if (!in_array($param['gzh_code'], config('xiaohongshu.gzh_code'))) {
             return "请去获取正确的'薯粉码'";
         }
 
@@ -26,7 +23,7 @@ class XiaoHongShuController extends Controller
             return "请填写正确的剩余次数";
         }
 
-        if (!in_array($param['count'], self::COUNT)) {
+        if (!in_array($param['count'], config('xiaohongshu.count'))) {
             return "请填写正确的剩余次数(1~3)";
         }
 
@@ -35,8 +32,6 @@ class XiaoHongShuController extends Controller
         }
 
         $param['code'] = trim($param['code']);
-
-
 
         return $param;
     }

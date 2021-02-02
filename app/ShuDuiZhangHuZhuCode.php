@@ -20,19 +20,20 @@ class ShuDuiZhangHuZhuCode extends Model
     public function search($params) {
 
 //
-        $exists = self::where('count', $params['count'])->orWhere('code', $params['code'])->exists();
+        $exists = self::where('count', $params['count'])->where('code', $params['code'])->exists();
         if (!$exists) {
             self::store($params);
         }
 
 
-
+        return self::where('count', $params['count'])->orderBy('created_at')->get();
     }
 
 
     public function store($params) {
         // 不存在则插入
         $mode = new ShuDuiZhangHuZhuCode();
+        $mode->gzh_code = $params['gzh_code'];
         $mode->count = $params['count'];
         $mode->code = $params['code'];
         $mode->save();
